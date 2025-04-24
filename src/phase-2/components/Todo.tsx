@@ -7,19 +7,15 @@ interface Todo {
 }
 
 export const TodoList: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  // Initialize todos from localStorage
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const savedTodos = localStorage.getItem("todos");
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
   const [newTodo, setNewTodo] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editText, setEditText] = useState("");
-
-  // Load todos from localStorage on component mount
-  useEffect(() => {
-    const savedTodos = localStorage.getItem("todos");
-    if (savedTodos) {
-      setTodos(JSON.parse(savedTodos));
-    }
-  }, []);
 
   // Save todos to localStorage whenever they change
   useEffect(() => {
