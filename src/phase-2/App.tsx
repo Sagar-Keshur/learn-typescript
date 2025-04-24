@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { Example } from "./components/FunctionalComponent";
+import { TodoList } from "./components/Todo";
 import "./styles.css";
 
 const App: FC = () => {
   return (
     <div className="example-container">
-      <h1>TypeScript React Examples</h1>
-      <Example />
+      <h1>TypeScript Todo App</h1>
+      <TodoList />
     </div>
   );
 };
